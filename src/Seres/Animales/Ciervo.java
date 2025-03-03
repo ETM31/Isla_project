@@ -3,8 +3,7 @@ package Seres.Animales;
 import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
-public class Rabbit extends Animal implements Eats {
-
+public class Ciervo extends Animal implements Eats {
     @Override
     public boolean isCarnivorous() {
         return false;
@@ -12,7 +11,7 @@ public class Rabbit extends Animal implements Eats {
 
     @Override
     public boolean isHerviborous() {
-        return true;
+        return false;
     }
 
     @Override

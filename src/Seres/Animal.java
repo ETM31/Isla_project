@@ -28,7 +28,7 @@ public abstract class Animal {
 
     public abstract void reproduction();
 
-    public void alive(Animal animal, Animal animalin){
+    /*public void alive(Animal animal, Animal animalin){
 
             if (animal instanceof Eats && animalin instanceof Eats && animal != null && animalin != null) {
                 if(((Eats) animal).isCarnivorous() && ((Eats) animalin).isHerviborous()){
@@ -36,6 +36,6 @@ public abstract class Animal {
                 }
             }
 
-    }
+    }*/
 
 }
