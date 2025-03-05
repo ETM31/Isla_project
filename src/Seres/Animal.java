@@ -8,6 +8,8 @@ public abstract class Animal {
     protected int maxSpeed;
     protected int needOfFood;
     private boolean living = true;
+    protected float weightF;
+    protected float needOfFoodF;
 
     public Animal() {}
 
@@ -19,6 +21,14 @@ public abstract class Animal {
         this.needOfFood = needOfFood;
     }
 
+    public Animal(int x, int y, int maxSpeed, float weight, float needOfFood) {
+        this.x = x;
+        this.y = y;
+        this.maxSpeed = maxSpeed;
+        this.weightF = weight;
+        this.needOfFoodF = needOfFood;
+    }
+
     public abstract void comer();
 
     public void direction(int velocidadX, int velocidadY){
@@ -27,6 +37,8 @@ public abstract class Animal {
     }
 
     public abstract void reproduction();
+
+    public abstract void draw();
 
     /*public void alive(Animal animal, Animal animalin){
 

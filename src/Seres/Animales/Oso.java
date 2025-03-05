@@ -4,10 +4,13 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Oso extends Animal implements Eats {
+    public Oso(int x, int y) {
+        super(x, y, 2, 500, 80);
+    }
 
     @Override
     public boolean isCarnivorous() {
-        return false;
+        return true;
     }
 
     @Override
@@ -23,5 +26,10 @@ public class Oso extends Animal implements Eats {
     @Override
     public void reproduction() {
 
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("🐻");
     }
 }

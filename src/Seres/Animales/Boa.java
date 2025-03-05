@@ -4,9 +4,13 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Boa extends Animal implements Eats {
+    public Boa(int x, int y) {
+        super(x, y, 1, 15, 3);
+    }
+
     @Override
     public boolean isCarnivorous() {
-        return false;
+        return true;
     }
 
     @Override
@@ -22,5 +26,10 @@ public class Boa extends Animal implements Eats {
     @Override
     public void reproduction() {
 
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("🐍");
     }
 }

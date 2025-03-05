@@ -28,4 +28,9 @@ public class Lobo extends Animal implements Eats {
     public void reproduction() {
 
     }
+
+    @Override
+    public void draw() {
+        System.out.println("🐺");
+    }
 }
