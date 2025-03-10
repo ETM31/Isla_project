@@ -4,8 +4,8 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Pato extends Animal implements Eats {
-    public Pato(int x, int y) {
-        super(x, y, 4, 1, .15F);
+    public Pato(int vX, int vY, int x, int y, boolean genero) {
+        super(vX, vY, 4, 1, .15F, x, y, 200, genero);
     }
 
     @Override

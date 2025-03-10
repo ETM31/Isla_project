@@ -4,8 +4,8 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Ciervo extends Animal implements Eats {
-    public Ciervo(int x, int y) {
-        super(x, y, 4, 300, 50);
+    public Ciervo(int vX, int vY, int x, int y, boolean genero) {
+        super(vX, vY, 4, 300, 50, x, y, 20, genero);
     }
 
     @Override

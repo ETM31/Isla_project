@@ -4,9 +4,9 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Lobo extends Animal implements Eats {
-    public Lobo(int x, int y){
+    public Lobo(int vX, int vY, int x, int y, boolean genero){
         //trata de hacer uqe la velocidad pueda variar de 0 a 3
-        super(x, y, 3, 50, 8);
+        super(vX, vY, 3, 50, 8, x, y, 30, genero);
     }
 
     @Override

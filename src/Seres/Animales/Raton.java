@@ -4,8 +4,8 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Raton extends Animal implements Eats {
-    public Raton(int x, int y) {
-        super(x, y, 1, .05F, .01F);
+    public Raton(int vX, int vY, int x, int y, boolean genero){
+        super(vX, vY, 1, .05F, .01F, x, y, 500, genero);
     }
 
     @Override
