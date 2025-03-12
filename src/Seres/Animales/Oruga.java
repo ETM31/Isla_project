@@ -4,8 +4,8 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Oruga extends Animal implements Eats {
-    public Oruga(int vX, int vY, int x, int y, boolean genero) {
-        super(vX, vY, 0, .01F, 0, x, y, 1000, genero);
+    public Oruga(int x, int y, boolean genero) {
+        super(0, .01F, 0, x, y, 1000, genero);
     }
 
     @Override
@@ -20,11 +20,6 @@ public class Oruga extends Animal implements Eats {
 
     @Override
     public void comer() {
-
-    }
-
-    @Override
-    public void reproduction() {
 
     }
 
