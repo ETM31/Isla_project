@@ -4,8 +4,8 @@ import Seres.Alimentacion.Eats;
 import Seres.Animal;
 
 public class Conejo extends Animal implements Eats {
-    public Conejo(int x, int y, boolean genero) {
-        super(2, 2, .45F, x, y, 150, genero);
+    public Conejo(int x, int y) {
+        super(2, 2, .45F, x, y, 150);
     }
 
     @Override
@@ -24,7 +24,8 @@ public class Conejo extends Animal implements Eats {
     }
 
     @Override
-    public void draw() {
+    public String draw() {
         System.out.println("\uD83D\uDC07");
+        return null;
     }
 }

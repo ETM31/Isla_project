@@ -7,7 +7,7 @@ public class Plantas extends Animal{
     static boolean alive = true;
 
     public Plantas(int x, int y) {
-        super(0, 1, 0, x, y, 200, false);
+        super(0, 1, 0, x, y, 200);
     }
 
     static void kill(){
@@ -20,7 +20,8 @@ public class Plantas extends Animal{
     }
 
     @Override
-    public void draw() {
+    public String draw() {
         System.out.println("🎄");
+        return null;
     }
 }

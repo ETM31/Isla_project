@@ -2,22 +2,23 @@ package Seres.Animales;
 
 import Seres.Animal;
 
+
 public class Fabrica {
 
-    public static Animal crearAnimal(AnimalesFabrica animlalesFabrica, int x, int y, boolean genero){
+    public static Animal crearAnimal(AnimalesFabrica animalesFabrica, int x, int y){
         Animal animal;
-        switch (animlalesFabrica) {
-            case BOA -> animal = new Boa(x, y, genero);
-            case CABALLO -> animal = new Caballo(x, y, genero);
-            case CIERVO -> animal = new Ciervo(x, y, genero);
-            case CONEJO -> animal = new Conejo(x, y, genero);
-            case LOBO -> animal = new Lobo(x, y, genero);
-            case ORUGA -> animal = new Oruga(x, y, genero);
-            case OSO -> animal = new Oso(x, y, genero);
-            case PATO -> animal = new Pato(x, y, genero);
-            case RATON -> animal = new Raton(x, y, genero);
-            case ZORRO -> animal = new Zorro(x, y, genero);
-            default -> throw new IllegalStateException("no te entiendo, no hay un animal: " + animlalesFabrica);
+        switch (animalesFabrica) {
+            case BOA -> animal = new Boa(x, y);
+            case CABALLO -> animal = new Caballo(x, y);
+            case CIERVO -> animal = new Ciervo(x, y);
+            case CONEJO -> animal = new Conejo(x, y);
+            case LOBO -> animal = new Lobo(x, y);
+            case ORUGA -> animal = new Oruga(x, y);
+            case OSO -> animal = new Oso(x, y);
+            case PATO -> animal = new Pato(x, y);
+            case RATON -> animal = new Raton(x, y);
+            case ZORRO -> animal = new Zorro(x, y);
+            default -> throw new IllegalStateException("no te entiendo, no hay un animal: " + animalesFabrica);
         }
 
         return animal;

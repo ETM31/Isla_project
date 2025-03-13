@@ -23,24 +23,24 @@ public abstract class Animal {
         return y;
     }
 
-    public Animal(int maxSpeed, float weight, float needOfFood, int x, int y, int limite, boolean genero) {
+    public Animal(int maxSpeed, float weight, float needOfFood, int x, int y, int limite) {
         this.x = x;
         this.y = y;
         this.maxSpeed = maxSpeed;
         this.weightF = weight;
         this.needOfFoodF = needOfFood;
         this.limite = limite;
-        this.genero = genero;
+        this.genero = random.nextBoolean();
     }
 
-    public Animal(int maxSpeed, int weight, int needOfFood, int x, int y, int limite, boolean genero) {
+    public Animal(int maxSpeed, int weight, int needOfFood, int x, int y, int limite) {
         this.x = x;
         this.y = y;
         this.maxSpeed = maxSpeed;
         this.weight = weight;
         this.needOfFood = needOfFood;
         this.limite = limite;
-        this.genero = genero;
+        this.genero = random.nextBoolean();
     }
 
     public abstract void comer();
@@ -55,7 +55,7 @@ public abstract class Animal {
     public void reproduction(Animal animal1, Animal animal2){
         if(animal2.genero != animal1.genero && animal1.x == animal2.x && animal1.y == animal2.y && animal1.getClass() == animal2.getClass()){
             try {
-                Animal cria = animal1.getClass().getConstructor(int.class, int.class, boolean.class).newInstance(animal1.x+1, animal1.y+1, genero());
+                Animal cria = animal1.getClass().getConstructor(int.class, int.class, boolean.class).newInstance(animal1.x+1, animal1.y+1, genero);
                 System.out.println("la cria nacio");
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 new RuntimeException("No se encontró el constructor ni el animal en referencia" + e);
@@ -65,11 +65,8 @@ public abstract class Animal {
         }
     }
 
-    public abstract void draw();
+    public abstract String draw();
 
-    public boolean genero(){
-        return random.nextBoolean();
-    }
 
     /*public void alive(Animal animal, Animal animalin){
 
