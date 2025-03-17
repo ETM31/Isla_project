@@ -1,6 +1,7 @@
 package Seres.Animales;
 
 import Seres.Alimentacion.Eats;
+import Seres.Alimentacion.Probabilidades;
 import Seres.Animal;
 
 public class Caballo extends Animal implements Eats {
@@ -23,13 +24,7 @@ public class Caballo extends Animal implements Eats {
     }
 
     @Override
-    public void comer() {
-
-    }
-
-    @Override
     public String draw() {
-        System.out.println("🐎");
-        return null;
+        return "🐎";
     }
 }

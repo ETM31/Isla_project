@@ -19,13 +19,7 @@ public class Oso extends Animal implements Eats {
     }
 
     @Override
-    public void comer() {
-
-    }
-
-    @Override
     public String draw() {
-        System.out.println("🐻");
-        return null;
+        return "🐻";
     }
 }

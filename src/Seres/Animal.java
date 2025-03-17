@@ -1,6 +1,10 @@
 package Seres;
 
-import java.lang.reflect.InvocationTargetException;
+import Seres.Alimentacion.Probabilidades;
+import Seres.Animales.AnimalesFabrica;
+import Seres.Animales.Fabrica;
+
+//import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 public abstract class Animal {
@@ -11,8 +15,8 @@ public abstract class Animal {
     private boolean living = true;
     protected float weightF;
     protected float needOfFoodF;
-    public int limite;
-    public boolean genero; //la idea es que si es "false" sea macho, y si es "true" es hembra
+    private int limite;
+    private boolean genero; //la idea es que si es "false" sea macho, y si es "true" es hembra
     Random random = new Random();
 
     public int getX() {
@@ -21,6 +25,14 @@ public abstract class Animal {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isLiving() {
+        return living;
+    }
+
+    public void kill() {
+        this.living = false;
     }
 
     public Animal(int maxSpeed, float weight, float needOfFood, int x, int y, int limite) {
@@ -43,7 +55,9 @@ public abstract class Animal {
         this.genero = random.nextBoolean();
     }
 
-    public abstract void comer();
+    public void comer(Animal animal) {
+        Probabilidades.chequeoProbabilidad(this.getClass(), animal);
+    }
 
     int posinega = 0;
     public void direction(Animal animal){
@@ -52,17 +66,26 @@ public abstract class Animal {
         this.y += random.nextInt(animal.maxSpeed+1) - posinega;
     }
 
-    public void reproduction(Animal animal1, Animal animal2){
+    public Animal reproduction(Animal animal1, Animal animal2){
+        Animal cria = null;
         if(animal2.genero != animal1.genero && animal1.x == animal2.x && animal1.y == animal2.y && animal1.getClass() == animal2.getClass()){
+            AnimalesFabrica enumTipoAnimalBb = AnimalesFabrica.fromClass(animal1.getClass());
+            cria = Fabrica.crearAnimal(enumTipoAnimalBb, animal1.x+1, animal1.y+1);
+            System.out.println("la cria nacio");
+            /*
+            Al final no use este porque para algo hice la clase Fabrica
             try {
-                Animal cria = animal1.getClass().getConstructor(int.class, int.class, boolean.class).newInstance(animal1.x+1, animal1.y+1, genero);
+                //Animal cria = animal1.getClass().getConstructor(int.class, int.class, boolean.class).newInstance(animal1.x+1, animal1.y+1, genero);
+                AnimalesFabrica cria = AnimalesFabrica.fromClass(animal1.getClass());
+                Fabrica.crearAnimal(cria, animal1.x+1, animal1.y+1);
                 System.out.println("la cria nacio");
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 new RuntimeException("No se encontró el constructor ni el animal en referencia" + e);
-            }
+            }*/
         } else {
             System.out.println("No nacio la cria");
         }
+        return cria;
     }
 
     public abstract String draw();

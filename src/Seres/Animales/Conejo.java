@@ -19,13 +19,7 @@ public class Conejo extends Animal implements Eats {
     }
 
     @Override
-    public void comer() {
-
-    }
-
-    @Override
     public String draw() {
-        System.out.println("\uD83D\uDC07");
-        return null;
+        return "\uD83D\uDC07";
     }
 }
