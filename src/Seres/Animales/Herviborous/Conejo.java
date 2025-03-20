@@ -1,11 +1,11 @@
-package Seres.Animales;
+package Seres.Animales.Herviborous;
 
-import Seres.Alimentacion.Eats;
+import Seres.Interacciones.Eats;
 import Seres.Animal;
 
-public class Oruga extends Animal implements Eats {
-    public Oruga(int x, int y) {
-        super(0, .01F, 0, x, y, 1000);
+public class Conejo extends Animal implements Eats {
+    public Conejo(int x, int y) {
+        super(2, 2, .45F, x, y, 150);
     }
 
     @Override
@@ -20,6 +20,6 @@ public class Oruga extends Animal implements Eats {
 
     @Override
     public String draw() {
-        return "🐛";
+        return "\uD83D\uDC07";
     }
 }

@@ -1,5 +1,16 @@
 package Seres.Animales;
 
+import Seres.Animales.Carnivorous.*;
+import Seres.Animales.Herviborous.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Este ENUM nos sirve para poder asociar los valores de una clase al enum.
+ * Además nos permite crear animales en la clase Fabrica.
+ */
+
 public enum AnimalesFabrica {
     BOA,
     CABALLO,
@@ -11,19 +22,29 @@ public enum AnimalesFabrica {
     PATO,
     RATON,
     ZORRO,
-    UNKNOWN;
+    PLANTA;
 
-    static public AnimalesFabrica fromClass(Class<?> clazz){
-        if(clazz == Boa.class) return BOA;
-        if(clazz == Caballo.class) return CABALLO;
-        if(clazz == Ciervo.class) return CIERVO;
-        if(clazz == Conejo.class) return CONEJO;
-        if(clazz == Lobo.class) return LOBO;
-        if(clazz == Oruga.class) return ORUGA;
-        if(clazz == Oso.class) return OSO;
-        if(clazz == Pato.class) return PATO;
-        if(clazz == Raton.class) return RATON;
-        if(clazz == Zorro.class) return ZORRO;
-        return UNKNOWN;
+    private static final Map<Class<?>, AnimalesFabrica> CLASS_ANIMALES_FABRICA_MAP = new HashMap<>();
+
+    static {
+        CLASS_ANIMALES_FABRICA_MAP.put(Boa.class, BOA);
+        CLASS_ANIMALES_FABRICA_MAP.put(Caballo.class, CABALLO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Ciervo.class, CIERVO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Conejo.class, CONEJO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Lobo.class, LOBO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Oruga.class, ORUGA);
+        CLASS_ANIMALES_FABRICA_MAP.put(Oso.class, OSO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Pato.class, PATO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Raton.class, RATON);
+        CLASS_ANIMALES_FABRICA_MAP.put(Zorro.class, ZORRO);
+        CLASS_ANIMALES_FABRICA_MAP.put(Plantas.class, PLANTA);
+    }
+
+    public static AnimalesFabrica fromClass(Class<?> clazz) {
+        AnimalesFabrica result = CLASS_ANIMALES_FABRICA_MAP.get(clazz);
+        if (result == null){
+            throw new RuntimeException("No se detecto ninguna clase perteneciente al objeto pedido, nos papeo el sistema");
+        }
+        return result;
     }
 }

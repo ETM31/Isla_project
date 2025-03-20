@@ -1,11 +1,11 @@
-package Seres.Animales;
+package Seres.Animales.Carnivorous;
 
-import Seres.Alimentacion.Eats;
+import Seres.Interacciones.Eats;
 import Seres.Animal;
 
-public class Conejo extends Animal implements Eats {
-    public Conejo(int x, int y) {
-        super(2, 2, .45F, x, y, 150);
+public class Pato extends Animal implements Eats {
+    public Pato(int x, int y) {
+        super(4, 1, .15F, x, y, 200);
     }
 
     @Override
@@ -20,6 +20,6 @@ public class Conejo extends Animal implements Eats {
 
     @Override
     public String draw() {
-        return "\uD83D\uDC07";
+        return "🦆";
     }
 }

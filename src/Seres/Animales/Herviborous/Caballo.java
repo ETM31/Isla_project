@@ -1,7 +1,6 @@
-package Seres.Animales;
+package Seres.Animales.Herviborous;
 
-import Seres.Alimentacion.Eats;
-import Seres.Alimentacion.Probabilidades;
+import Seres.Interacciones.Eats;
 import Seres.Animal;
 
 public class Caballo extends Animal implements Eats {

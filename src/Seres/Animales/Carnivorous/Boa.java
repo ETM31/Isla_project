@@ -1,7 +1,6 @@
-package Seres.Animales;
+package Seres.Animales.Carnivorous;
 
-import Seres.Alimentacion.Eats;
-import Seres.Alimentacion.Probabilidades;
+import Seres.Interacciones.Eats;
 import Seres.Animal;
 
 public class Boa extends Animal implements Eats {

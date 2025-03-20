@@ -1,6 +1,8 @@
 package Seres.Animales;
 
 import Seres.Animal;
+import Seres.Animales.Carnivorous.*;
+import Seres.Animales.Herviborous.*;
 
 
 public class Fabrica {
@@ -18,6 +20,7 @@ public class Fabrica {
             case PATO -> animal = new Pato(x, y);
             case RATON -> animal = new Raton(x, y);
             case ZORRO -> animal = new Zorro(x, y);
+            case PLANTA -> animal = new Plantas(x, y);
             default -> throw new IllegalStateException("no te entiendo, no hay un animal: " + animalesFabrica);
         }
 

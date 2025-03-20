@@ -1,20 +1,22 @@
 package Seres;
 
-import Seres.Alimentacion.Probabilidades;
+import Seres.Interacciones.Eats;
+import Seres.Interacciones.Probabilidades;
 import Seres.Animales.AnimalesFabrica;
 import Seres.Animales.Fabrica;
 
 //import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import java.util.Random;
 
-public abstract class Animal {
-    protected int x, y, vX, vY; // para saber donde se ubicará
-    protected int weight;
-    protected int maxSpeed;
-    protected int needOfFood;
+public abstract class Animal implements Eats {
+    private int x, y; // para saber donde se ubicará
+    private int weight;
+    private int maxSpeed;
+    private int needOfFood;
     private boolean living = true;
-    protected float weightF;
-    protected float needOfFoodF;
+    private float weightF;
+    private float needOfFoodF;
     private int limite;
     private boolean genero; //la idea es que si es "false" sea macho, y si es "true" es hembra
     Random random = new Random();
@@ -27,8 +29,8 @@ public abstract class Animal {
         return y;
     }
 
-    public boolean isLiving() {
-        return living;
+    public boolean isGenero() {
+        return genero;
     }
 
     public void kill() {
@@ -55,23 +57,46 @@ public abstract class Animal {
         this.genero = random.nextBoolean();
     }
 
-    public void comer(Animal animal) {
-        Probabilidades.chequeoProbabilidad(this.getClass(), animal);
+    /**
+     * Lo que hice es que comer() está en la clase Interacciones, esa clase se encargará de llamar los métodos según
+     * como se vea que puede que actuen los Objetos
+     * @param animal2
+     */
+    public void comer(/*Map<Integer, Animal> animales*/Animal animal2) {
+        //for (Animal animal : animales.values()) {
+            //Probabilidades.chequeoProbabilidad(this.getClass(), animal);
+            for(Map.Entry<Class<?>, Map<Class<?>, Integer>> animal : Probabilidades.PROBABILIDADES_ALIMANTACION.entrySet()){
+                System.out.println(animal.getKey().getSimpleName() + ":");
+                if (animal.getKey() == this.getClass()){
+                    for (Map.Entry<Class<?>, Integer> probabilidad : animal.getValue().entrySet()){
+                        //System.out.println(probabilidad.getValue() + " probabilidad " + probabilidad.getKey().getSimpleName());
+                        if (probabilidad.getKey() == animal2.getClass()) {
+                            System.out.println(probabilidad.getValue() + " " + probabilidad.getKey().getSimpleName());
+                        } else {
+                            throw new RuntimeException(animal.getKey().getSimpleName() + " no come " + animal2.getClass().getSimpleName());
+                        }
+                    }
+                    break;
+                }
+            }
+
+        //}
     }
 
     int posinega = 0;
-    public void direction(Animal animal){
-        posinega = random.nextInt(animal.maxSpeed+1);
-        this.x += random.nextInt(animal.maxSpeed+1) - posinega;
-        this.y += random.nextInt(animal.maxSpeed+1) - posinega;
+    public void direction(){
+        posinega = random.nextInt(this.maxSpeed+1);
+        this.x += random.nextInt(this.maxSpeed+1) - posinega;
+        this.y += random.nextInt(this.maxSpeed+1) - posinega;
     }
 
-    public Animal reproduction(Animal animal1, Animal animal2){
+    public void reproduction(/*Map<Integer, Animal> mapAnimales*/){
         Animal cria = null;
-        if(animal2.genero != animal1.genero && animal1.x == animal2.x && animal1.y == animal2.y && animal1.getClass() == animal2.getClass()){
-            AnimalesFabrica enumTipoAnimalBb = AnimalesFabrica.fromClass(animal1.getClass());
-            cria = Fabrica.crearAnimal(enumTipoAnimalBb, animal1.x+1, animal1.y+1);
-            System.out.println("la cria nacio");
+        //for (Animal animal1 : mapAnimales.values()) {
+            //if (animal1.genero != this.genero && this.x == animal1.x && this.y == animal1.y && this.getClass() == animal1.getClass()) {
+                AnimalesFabrica enumTipoAnimalBb = AnimalesFabrica.fromClass(this.getClass());
+                cria = Fabrica.crearAnimal(enumTipoAnimalBb, this.x + 1, this.y + 1);
+                //mapAnimales.put(mapAnimales.size()-1,cria);
             /*
             Al final no use este porque para algo hice la clase Fabrica
             try {
@@ -82,25 +107,9 @@ public abstract class Animal {
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 new RuntimeException("No se encontró el constructor ni el animal en referencia" + e);
             }*/
-        } else {
-            System.out.println("No nacio la cria");
-        }
-        return cria;
+            //}
+        //}
     }
 
     public abstract String draw();
-
-
-    /*public void alive(Animal animal, Animal animalin){
-
-            if (animal instanceof Eats && animalin instanceof Eats && animal != null && animalin != null) {
-                if(((Eats) animal).isCarnivorous() && ((Eats) animalin).isHerviborous()){
-                    living = false;
-                }
-            }
-
-    }*/
-
-
-
 }

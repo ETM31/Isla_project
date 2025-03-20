@@ -1,6 +1,6 @@
-package Seres.Animales;
+package Seres.Animales.Carnivorous;
 
-import Seres.Alimentacion.Eats;
+import Seres.Interacciones.Eats;
 import Seres.Animal;
 
 public class Oso extends Animal implements Eats {

@@ -1,4 +1,4 @@
-package Seres.Animales;
+package Seres.Animales.Herviborous;
 
 import Seres.Animal;
 
@@ -11,5 +11,15 @@ public class Plantas extends Animal{
     @Override
     public String draw() {
         return "🎄";
+    }
+
+    @Override
+    public boolean isCarnivorous() {
+        return false;
+    }
+
+    @Override
+    public boolean isHerviborous() {
+        return false;
     }
 }
